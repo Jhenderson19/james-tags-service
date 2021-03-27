@@ -42,7 +42,16 @@ class DataManager {
   addTagToGame(tag, gameId) {
     return this.getTagId(tag).then((id) => {
       return db.queryAsync(`INSERT INTO game_tag_joinTable (id_tags, id_games) VALUES (${id}, ${gameId});`);
-    })
+    });
+  }
+  getGameTags(gameId) {
+    return db.queryAsync(`SELECT (tags.name) FROM tags INNER JOIN game_tag_joinTable ON id_tags = tags.id WHERE id_games = ${gameId} ORDER BY game_tag_joinTable.id ASC;`).then((results) => {
+      var tags = [];
+      results.forEach((result) => {
+        tags.push(result.name);
+      })
+      return tags;
+    });
   }
 
   closeConnection() {

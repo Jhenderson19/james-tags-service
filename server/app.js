@@ -16,6 +16,14 @@ app.use(bodyParser.json());
 
 
 //api endpoints
+app.get('/api/tags/forProduct/:id', (req, res) => {
+  //returns all tags for game by id
+  dbManager.getGameTags(req.params.id).then((tags) => {
+    res.status(200).send(tags);
+  }).catch((error) => {
+    res.status(404).send(error);
+  })
+});
 
 
 
