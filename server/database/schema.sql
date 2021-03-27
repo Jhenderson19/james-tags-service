@@ -15,7 +15,7 @@ USE fec_pathfinder_tags;
 DROP TABLE IF EXISTS `tags`;
 
 CREATE TABLE `tags` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `id` INTEGER AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id`)
 );
@@ -28,7 +28,7 @@ CREATE TABLE `tags` (
 DROP TABLE IF EXISTS `game_tag_joinTable`;
 
 CREATE TABLE `game_tag_joinTable` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `id` INTEGER AUTO_INCREMENT,
   `id_tags` INTEGER NOT NULL,
   `id_games` INTEGER NOT NULL,
   PRIMARY KEY (`id`)
